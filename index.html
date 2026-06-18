@@ -1,428 +1,430 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Interview Q&A - 每日技术面试题</title>
-    <meta name="description" content="Daily curated English interview questions and answers for software engineers. Practice system design, behavioral, and technical interview Q&amp;A with bilingual support. Updated daily with fresh content.">
-    <meta name="keywords" content="interview questions, English interview, software engineer interview, system design interview, behavioral interview, interview preparation, Q&A, 2026 interview guide, tech interview tips">
-    <meta name="author" content="English Interview Q&A">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://example.com/english-interview/">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="English Interview Q&amp;A - June 18, 2026">
-    <meta property="og:description" content="Daily curated English interview questions and answers for software engineers. Practice with 5 fresh Q&amp;A cards featuring system design, behavioral, and technical topics.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://example.com/english-interview/">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:site_name" content="English Interview Q&A">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="English Interview Q&amp;A - June 18, 2026">
-    <meta name="twitter:description" content="Daily curated English interview Q&amp;A for software engineers.">
-
-    <style>
-        :root {
-            --bg: #0f1117;
-            --surface: #1a1d27;
-            --surface-hover: #222633;
-            --border: #2a2e3d;
-            --text: #e4e6ed;
-            --text-muted: #8b8fa3;
-            --accent: #6c63ff;
-            --accent-light: #8b83ff;
-            --green: #34d399;
-            --yellow: #fbbf24;
-            --red: #f87171;
-            --blue: #60a5fa;
-            --purple: #a78bfa;
-            --radius: 12px;
-            --shadow: 0 4px 24px rgba(0,0,0,0.3);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 24px 16px;
-        }
-
-        header {
-            text-align: center;
-            padding: 48px 16px 32px;
-        }
-
-        header h1 {
-            font-size: clamp(1.8rem, 5vw, 2.8rem);
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--accent), var(--blue), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
-        }
-
-        header .subtitle {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-        }
-
-        header .date-badge {
-            display: inline-block;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            color: var(--accent-light);
-            margin-top: 12px;
-        }
-
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 28px 24px;
-            margin-bottom: 20px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-        }
-
-        .card-number {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--accent);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .tags {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 3px 10px;
-            border-radius: 12px;
-            letter-spacing: 0.3px;
-        }
-
-        .tag-easy { background: rgba(52,211,153,0.15); color: var(--green); }
-        .tag-medium { background: rgba(251,191,36,0.15); color: var(--yellow); }
-        .tag-hard { background: rgba(248,113,113,0.15); color: var(--red); }
-        .tag-behavioral { background: rgba(96,165,250,0.15); color: var(--blue); }
-        .tag-system-design { background: rgba(167,139,250,0.15); color: var(--purple); }
-        .tag-technical { background: rgba(108,99,255,0.15); color: var(--accent-light); }
-
-        .question {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 16px;
-            line-height: 1.5;
-        }
-
-        .answer-section {
-            position: relative;
-        }
-
-        .answer-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-        }
-
-        .answer-text {
-            color: var(--text);
-            font-size: 0.95rem;
-            line-height: 1.8;
-            white-space: pre-wrap;
-        }
-
-        .cn-hint {
-            margin-top: 14px;
-            padding: 10px 14px;
-            background: rgba(108,99,255,0.08);
-            border-left: 3px solid var(--accent);
-            border-radius: 0 8px 8px 0;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        .cn-hint strong {
-            color: var(--accent-light);
-        }
-
-        .toggle-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 14px;
-            padding: 6px 14px;
-            background: var(--surface-hover);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .toggle-btn:hover {
-            background: var(--accent);
-            color: #fff;
-            border-color: var(--accent);
-        }
-
-        .lang-switch {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin: 32px 0 16px;
-        }
-
-        .lang-btn {
-            padding: 8px 20px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            background: var(--surface);
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .lang-btn.active {
-            background: var(--accent);
-            color: #fff;
-            border-color: var(--accent);
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px 16px;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-        }
-
-        footer a {
-            color: var(--accent-light);
-            text-decoration: none;
-        }
-
-        @media (max-width: 600px) {
-            .card { padding: 20px 16px; }
-            .question { font-size: 1.05rem; }
-            .answer-text { font-size: 0.9rem; }
-            header { padding: 32px 12px 24px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>English Interview Q&amp;A</h1>
-            <p class="subtitle">Curated questions and model answers for software engineering interviews</p>
-            <span class="date-badge">June 18, 2026</span>
-        </header>
-<h2 style="text-align:center;color:#666;font-size:1.2em;margin:20px 0">今日面试题</h2>
-
-        <div class="lang-switch">
-            <button class="lang-btn active" onclick="showAll('en')">English</button>
-            <button class="lang-btn" onclick="showAll('cn')">Chinese</button>
-            <button class="lang-btn" onclick="showAll('both')">Both</button>
-        </div>
-
-        <!-- Q1 -->
-        <div class="card" data-lang="both">
-            <div class="card-header">
-                <span class="card-number">#01</span>
-                <div class="tags">
-                    <span class="tag tag-medium">Medium</span>
-                    <span class="tag tag-behavioral">Behavioral</span>
-                </div>
-            </div>
-            <div class="question">Tell me about a time you disagreed with a technical decision made by your team.</div>
-            <div class="answer-section">
-                <div class="answer-label">Answer</div>
-                <div class="answer-text">"We were building a new microservice and the team decided to use REST API for internal service-to-service communication. I had concerns about that approach given our performance requirements. I put together a quick benchmark comparing REST with gRPC for our specific payload sizes and latency targets. The data showed gRPC would cut our p99 latency almost in half. We switched the approach for internal calls and kept REST for external-facing endpoints. The performance improvement was real, and having the data took the personal edge out of the disagreement completely."</div>
-                <div class="cn-hint"><strong>中文提示：</strong>考察冲突处理与数据驱动决策能力。使用STAR/SOAR结构：情境(Situation)、障碍(Obstacle)、行动(Action)、结果(Result)。强调用数据说话，而非情绪对抗。</div>
-            </div>
-            <button class="toggle-btn" onclick="toggleAnswer(this)">Hide Answer ▲</button>
-        </div>
-
-        <!-- Q2 -->
-        <div class="card" data-lang="both">
-            <div class="card-header">
-                <span class="card-number">#02</span>
-                <div class="tags">
-                    <span class="tag tag-hard">Hard</span>
-                    <span class="tag tag-system-design">System Design</span>
-                </div>
-            </div>
-            <div class="question">Design a URL shortening service like bit.ly. Walk me through your approach.</div>
-            <div class="answer-section">
-                <div class="answer-label">Answer</div>
-                <div class="answer-text">"Before designing, I'd clarify requirements: Are we optimizing for read-heavy traffic? What's the expected scale? Assuming millions of DAUs, the core function is simple: take a long URL, generate a short key, store the mapping, and redirect users.
-
-For key generation, I'd use base-62 encoding of an auto-incrementing ID from the database, giving us enough unique combinations to last a very long time. For storage, a relational database works at moderate scale, but at very high traffic I'd add a caching layer like Redis in front of it, since most redirects are reads for popular URLs.
-
-The redirect service should be stateless and horizontally scalable behind a load balancer. I'd also implement rate limiting on the creation endpoint to prevent abuse. If we need analytics, we can asynchronously log redirect events to a data pipeline."</div>
-                <div class="cn-hint"><strong>中文提示：</strong>系统设计经典题。回答框架：先clarify需求（读写比例、规模）→ 给出整体架构 → 深入关键组件（key生成、存储、缓存、负载均衡）→ 扩展讨论（限流、分析）。展示trade-off思考。</div>
-            </div>
-            <button class="toggle-btn" onclick="toggleAnswer(this)">Hide Answer ▲</button>
-        </div>
-
-        <!-- Q3 -->
-        <div class="card" data-lang="both">
-            <div class="card-header">
-                <span class="card-number">#03</span>
-                <div class="tags">
-                    <span class="tag tag-medium">Medium</span>
-                    <span class="tag tag-technical">Technical</span>
-                </div>
-            </div>
-            <div class="question">How do hash tables work, and how would you handle collisions?</div>
-            <div class="answer-section">
-                <div class="answer-label">Answer</div>
-                <div class="answer-text">"Hash tables use a hash function to map keys to array indices, providing O(1) average-case time complexity for insert, search, and delete operations.
-
-For collision handling, there are two primary strategies:
-
-1. Chaining: Each bucket stores a linked list (or balanced tree) of entries with the same hash. When a collision occurs, the new entry is appended to the list. Simple to implement; performance degrades gracefully.
-
-2. Open Addressing: When a collision occurs, probe for the next available slot. Methods include linear probing, quadratic probing, and double hashing. Requires a load factor threshold (typically 0.7) to maintain performance.
-
-In practice, modern implementations (like Java's HashMap) use chaining with trees for buckets that exceed a threshold (e.g., 8 entries), achieving O(log n) worst-case lookup."</div>
-                <div class="cn-hint"><strong>中文提示：</strong>数据结构基础题。回答要点：哈希表原理（hash function → index）→ 碰撞原因 → 两种解决方案（链地址法/开放寻址法）→ 各自优缺点 → 实际应用中的优化（如Java HashMap的树化）。注意区分平均O(1)和最坏情况。</div>
-            </div>
-            <button class="toggle-btn" onclick="toggleAnswer(this)">Hide Answer ▲</button>
-        </div>
-
-        <!-- Q4 -->
-        <div class="card" data-lang="both">
-            <div class="card-header">
-                <span class="card-number">#04</span>
-                <div class="tags">
-                    <span class="tag tag-easy">Easy</span>
-                    <span class="tag tag-behavioral">Behavioral</span>
-                </div>
-            </div>
-            <div class="question">Describe a time you had to learn a new technology quickly to complete a project.</div>
-            <div class="answer-section">
-                <div class="answer-label">Answer</div>
-                <div class="answer-text">"During my last role, our team was tasked with migrating our reporting dashboard from a JavaScript-based charting library to Apache ECharts for better performance with large datasets. I had never used ECharts before, and we had a three-week deadline.
-
-My approach was: First, I built a minimal proof-of-concept over the weekend to understand the API surface and rendering model. Second, I set up a structured learning plan — one official doc section per day, paired with implementing one chart type. Third, I created a shared internal wiki with common patterns, gotchas, and code snippets for the team.
-
-By the end of the sprint, we'd migrated 80% of the charts and reduced average render time from 2.3 seconds to 340 milliseconds. The experience taught me that rapid learning is about focused experimentation, not passive reading."</div>
-                <div class="cn-hint"><strong>中文提示：</strong>学习能力与主动性考察。使用SOAR结构：情境（项目需要新技术）→ 障碍（时间紧、零基础）→ 行动（POC快速验证、结构化学习计划、知识共享）→ 结果（提前完成、性能提升85%）。突出学习方法和可量化的成果。</div>
-            </div>
-            <button class="toggle-btn" onclick="toggleAnswer(this)">Hide Answer ▲</button>
-        </div>
-
-        <!-- Q5 -->
-        <div class="card" data-lang="both">
-            <div class="card-header">
-                <span class="card-number">#05</span>
-                <div class="tags">
-                    <span class="tag tag-hard">Hard</span>
-                    <span class="tag tag-system-design">System Design</span>
-                </div>
-            </div>
-            <div class="question">How would you design a rate limiter for an API?</div>
-            <div class="answer-section">
-                <div class="answer-label">Answer</div>
-                <div class="answer-text">"Rate limiting protects services from abuse and manages traffic. Several algorithms exist, each with trade-offs:
-
-1. Fixed Window Counter: Simple counter per time window. Problem: boundary spike — requests at the end of one window and start of the next can double the allowed rate.
-
-2. Sliding Window Log: Track individual request timestamps. More accurate but memory-intensive at high throughput.
-
-3. Token Bucket: Tokens refill at a steady rate; each request consumes one. Allows bursts up to bucket capacity while enforcing a sustained rate. Good balance of accuracy and efficiency.
-
-4. Leaky Bucket: Requests enter at any rate but exit at a fixed rate. Smooths traffic but doesn't allow controlled bursts.
-
-For a distributed system, I'd use Redis with the sliding window counter approach — storing request timestamps in a sorted set with TTL equal to the window size. This gives us O(log N) operations and automatic cleanup. For high-traffic APIs, I'd add a local in-memory rate limiter as a first layer (fast rejection) before hitting Redis."</div>
-                <div class="cn-hint"><strong>中文提示：</strong>分布式系统经典设计题。回答框架：明确目的（防滥用、限流）→ 对比多种算法（固定窗口/滑动窗口/令牌桶/漏桶）的优劣 → 给出分布式方案（Redis + Sorted Set）→ 扩展讨论（本地+全局双层限流、不同粒度的限流策略）。展示trade-off权衡能力。</div>
-            </div>
-            <button class="toggle-btn" onclick="toggleAnswer(this)">Hide Answer ▲</button>
-        </div>
-
-        <footer>
-            <p>Daily English Interview Q&amp;A &copy; 2026 &middot; Content sourced from LeetCode Discussions, industry guides &amp; expert interviews</p>
-            <p style="margin-top:8px;">Practice daily. Interview with confidence. <a href="#">Back to Home</a></p>
-        </footer>
-    </div>
-
-    <script>
-        function toggleAnswer(btn) {
-            const card = btn.closest('.card');
-            const answerSection = card.querySelector('.answer-section');
-            const answerText = answerSection.querySelector('.answer-text');
-            if (answerText.style.display === 'none') {
-                answerText.style.display = '';
-                btn.textContent = 'Hide Answer ▲';
-            } else {
-                answerText.style.display = 'none';
-                btn.textContent = 'Show Answer ▼';
-            }
-        }
-
-        function showAll(lang) {
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
-
-            document.querySelectorAll('.card').forEach(card => {
-                const hint = card.querySelector('.cn-hint');
-                const answer = card.querySelector('.answer-text');
-                if (lang === 'en') {
-                    if (hint) hint.style.display = 'none';
-                    if (answer) answer.style.display = '';
-                } else if (lang === 'cn') {
-                    if (hint) hint.style.display = '';
-                    if (answer) answer.style.display = 'none';
-                } else {
-                    if (hint) hint.style.display = '';
-                    if (answer) answer.style.display = '';
-                }
-            });
-        }
-
-        // Initialize: show both
-        document.querySelectorAll('.cn-hint').forEach(h => h.style.display = '');
-    </script>
-<nav class="site-nav" style="text-align:center;padding:20px 0;border-top:1px solid #eee;margin-top:20px"><p style="color:#999;margin-bottom:10px">更多站点：</p><a href="/ai-daily-news/">AI日报站</a> | <a href="/chuangye-weekly/">出海工具周报</a> | <a href="/indie-dev-weekly/">独立开发者周刊</a> | <a href="/nocode-tools/">NoCode工具导航</a></nav>
-</body>
-</html>
+1|<!DOCTYPE html>
+2|<html lang="en">
+3|<head>
+    <link rel="preconnect" href="https://shijiezhichang.github.io" crossorigin>
+4|    <meta charset="UTF-8">
+5|    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+6|    <title>English Interview Q&A - 每日技术面试题</title>
+7|    <meta name="description" content="Daily curated English interview questions and answers for software engineers. Practice system design, behavioral, and technical interview Q&amp;A with bilingual support. Updated daily with fresh content.">
+8|    <meta name="keywords" content="interview questions, English interview, software engineer interview, system design interview, behavioral interview, interview preparation, Q&A, 2026 interview guide, tech interview tips">
+9|    <meta name="author" content="English Interview Q&A">
+10|    <meta name="robots" content="index, follow">
+11|    <link rel="canonical" href="https://example.com/english-interview/">
+12|
+13|    <!-- Open Graph -->
+14|    <meta property="og:title" content="English Interview Q&amp;A - June 18, 2026">
+15|    <meta property="og:description" content="Daily curated English interview questions and answers for software engineers. Practice with 5 fresh Q&amp;A cards featuring system design, behavioral, and technical topics.">
+16|    <meta property="og:type" content="website">
+17|    <meta property="og:url" content="https://example.com/english-interview/">
+18|    <meta property="og:locale" content="en_US">
+19|    <meta property="og:site_name" content="English Interview Q&A">
+20|
+21|    <!-- Twitter Card -->
+22|    <meta name="twitter:card" content="summary_large_image">
+23|    <meta name="twitter:title" content="English Interview Q&amp;A - June 18, 2026">
+24|    <meta name="twitter:description" content="Daily curated English interview Q&amp;A for software engineers.">
+25|
+26|    <style>
+27|        :root {
+28|            --bg: #0f1117;
+29|            --surface: #1a1d27;
+30|            --surface-hover: #222633;
+31|            --border: #2a2e3d;
+32|            --text: #e4e6ed;
+33|            --text-muted: #8b8fa3;
+34|            --accent: #6c63ff;
+35|            --accent-light: #8b83ff;
+36|            --green: #34d399;
+37|            --yellow: #fbbf24;
+38|            --red: #f87171;
+39|            --blue: #60a5fa;
+40|            --purple: #a78bfa;
+41|            --radius: 12px;
+42|            --shadow: 0 4px 24px rgba(0,0,0,0.3);
+43|        }
+44|
+45|        * { margin: 0; padding: 0; box-sizing: border-box; }
+46|
+47|        body {
+48|            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+49|            background: var(--bg);
+50|            color: var(--text);
+51|            line-height: 1.7;
+52|            min-height: 100vh;
+53|        }
+54|
+55|        .container {
+56|            max-width: 900px;
+57|            margin: 0 auto;
+58|            padding: 24px 16px;
+59|        }
+60|
+61|        header {
+62|            text-align: center;
+63|            padding: 48px 16px 32px;
+64|        }
+65|
+66|        header h1 {
+67|            font-size: clamp(1.8rem, 5vw, 2.8rem);
+68|            font-weight: 800;
+69|            background: linear-gradient(135deg, var(--accent), var(--blue), var(--purple));
+70|            -webkit-background-clip: text;
+71|            -webkit-text-fill-color: transparent;
+72|            background-clip: text;
+73|            margin-bottom: 8px;
+74|        }
+75|
+76|        header .subtitle {
+77|            color: var(--text-muted);
+78|            font-size: 1.05rem;
+79|        }
+80|
+81|        header .date-badge {
+82|            display: inline-block;
+83|            background: var(--surface);
+84|            border: 1px solid var(--border);
+85|            padding: 6px 16px;
+86|            border-radius: 20px;
+87|            font-size: 0.85rem;
+88|            color: var(--accent-light);
+89|            margin-top: 12px;
+90|        }
+91|
+92|        .card {
+93|            background: var(--surface);
+94|            border: 1px solid var(--border);
+95|            border-radius: var(--radius);
+96|            padding: 28px 24px;
+97|            margin-bottom: 20px;
+98|            transition: transform 0.2s, box-shadow 0.2s;
+99|        }
+100|
+101|        .card:hover {
+102|            transform: translateY(-2px);
+103|            box-shadow: var(--shadow);
+104|        }
+105|
+106|        .card-header {
+107|            display: flex;
+108|            justify-content: space-between;
+109|            align-items: flex-start;
+110|            gap: 12px;
+111|            margin-bottom: 16px;
+112|            flex-wrap: wrap;
+113|        }
+114|
+115|        .card-number {
+116|            font-size: 0.75rem;
+117|            font-weight: 700;
+118|            color: var(--accent);
+119|            letter-spacing: 1px;
+120|            text-transform: uppercase;
+121|        }
+122|
+123|        .tags {
+124|            display: flex;
+125|            gap: 6px;
+126|            flex-wrap: wrap;
+127|        }
+128|
+129|        .tag {
+130|            font-size: 0.7rem;
+131|            font-weight: 600;
+132|            padding: 3px 10px;
+133|            border-radius: 12px;
+134|            letter-spacing: 0.3px;
+135|        }
+136|
+137|        .tag-easy { background: rgba(52,211,153,0.15); color: var(--green); }
+138|        .tag-medium { background: rgba(251,191,36,0.15); color: var(--yellow); }
+139|        .tag-hard { background: rgba(248,113,113,0.15); color: var(--red); }
+140|        .tag-behavioral { background: rgba(96,165,250,0.15); color: var(--blue); }
+141|        .tag-system-design { background: rgba(167,139,250,0.15); color: var(--purple); }
+142|        .tag-technical { background: rgba(108,99,255,0.15); color: var(--accent-light); }
+143|
+144|        .question {
+145|            font-size: 1.15rem;
+146|            font-weight: 700;
+147|            color: #fff;
+148|            margin-bottom: 16px;
+149|            line-height: 1.5;
+150|        }
+151|
+152|        .answer-section {
+153|            position: relative;
+154|        }
+155|
+156|        .answer-label {
+157|            font-size: 0.75rem;
+158|            font-weight: 600;
+159|            color: var(--text-muted);
+160|            text-transform: uppercase;
+161|            letter-spacing: 0.5px;
+162|            margin-bottom: 8px;
+163|        }
+164|
+165|        .answer-text {
+166|            color: var(--text);
+167|            font-size: 0.95rem;
+168|            line-height: 1.8;
+169|            white-space: pre-wrap;
+170|        }
+171|
+172|        .cn-hint {
+173|            margin-top: 14px;
+174|            padding: 10px 14px;
+175|            background: rgba(108,99,255,0.08);
+176|            border-left: 3px solid var(--accent);
+177|            border-radius: 0 8px 8px 0;
+178|            font-size: 0.85rem;
+179|            color: var(--text-muted);
+180|        }
+181|
+182|        .cn-hint strong {
+183|            color: var(--accent-light);
+184|        }
+185|
+186|        .toggle-btn {
+187|            display: inline-flex;
+188|            align-items: center;
+189|            gap: 6px;
+190|            margin-top: 14px;
+191|            padding: 6px 14px;
+192|            background: var(--surface-hover);
+193|            border: 1px solid var(--border);
+194|            border-radius: 8px;
+195|            color: var(--text-muted);
+196|            font-size: 0.8rem;
+197|            cursor: pointer;
+198|            transition: all 0.2s;
+199|        }
+200|
+201|        .toggle-btn:hover {
+202|            background: var(--accent);
+203|            color: #fff;
+204|            border-color: var(--accent);
+205|        }
+206|
+207|        .lang-switch {
+208|            display: flex;
+209|            justify-content: center;
+210|            gap: 8px;
+211|            margin: 32px 0 16px;
+212|        }
+213|
+214|        .lang-btn {
+215|            padding: 8px 20px;
+216|            border-radius: 20px;
+217|            border: 1px solid var(--border);
+218|            background: var(--surface);
+219|            color: var(--text-muted);
+220|            font-size: 0.85rem;
+221|            font-weight: 600;
+222|            cursor: pointer;
+223|            transition: all 0.2s;
+224|        }
+225|
+226|        .lang-btn.active {
+227|            background: var(--accent);
+228|            color: #fff;
+229|            border-color: var(--accent);
+230|        }
+231|
+232|        footer {
+233|            text-align: center;
+234|            padding: 40px 16px;
+235|            color: var(--text-muted);
+236|            font-size: 0.8rem;
+237|        }
+238|
+239|        footer a {
+240|            color: var(--accent-light);
+241|            text-decoration: none;
+242|        }
+243|
+244|        @media (max-width: 600px) {
+245|            .card { padding: 20px 16px; }
+246|            .question { font-size: 1.05rem; }
+247|            .answer-text { font-size: 0.9rem; }
+248|            header { padding: 32px 12px 24px; }
+249|        }
+250|    </style>
+251|</head>
+252|<body>
+253|    <div class="container">
+254|        <header>
+255|            <h1>English Interview Q&amp;A</h1>
+256|            <p class="subtitle">Curated questions and model answers for software engineering interviews</p>
+257|            <span class="date-badge">June 18, 2026</span>
+258|        </header>
+259|<h2 style="text-align:center;color:#666;font-size:1.2em;margin:20px 0">今日面试题</h2>
+260|
+261|        <div class="lang-switch">
+262|            <button class="lang-btn active" onclick="showAll('en')">English</button>
+263|            <button class="lang-btn" onclick="showAll('cn')">Chinese</button>
+264|            <button class="lang-btn" onclick="showAll('both')">Both</button>
+265|        </div>
+266|
+267|        <!-- Q1 -->
+268|        <div class="card" data-lang="both">
+269|            <div class="card-header">
+270|                <span class="card-number">#01</span>
+271|                <div class="tags">
+272|                    <span class="tag tag-medium">Medium</span>
+273|                    <span class="tag tag-behavioral">Behavioral</span>
+274|                </div>
+275|            </div>
+276|            <div class="question">Tell me about a time you disagreed with a technical decision made by your team.</div>
+277|            <div class="answer-section">
+278|                <div class="answer-label">Answer</div>
+279|                <div class="answer-text">"We were building a new microservice and the team decided to use REST API for internal service-to-service communication. I had concerns about that approach given our performance requirements. I put together a quick benchmark comparing REST with gRPC for our specific payload sizes and latency targets. The data showed gRPC would cut our p99 latency almost in half. We switched the approach for internal calls and kept REST for external-facing endpoints. The performance improvement was real, and having the data took the personal edge out of the disagreement completely."</div>
+280|                <div class="cn-hint"><strong>中文提示：</strong>考察冲突处理与数据驱动决策能力。使用STAR/SOAR结构：情境(Situation)、障碍(Obstacle)、行动(Action)、结果(Result)。强调用数据说话，而非情绪对抗。</div>
+281|            </div>
+282|            <button class="toggle-btn" onclick="toggleAnswer(this)">Hide Answer ▲</button>
+283|        </div>
+284|
+285|        <!-- Q2 -->
+286|        <div class="card" data-lang="both">
+287|            <div class="card-header">
+288|                <span class="card-number">#02</span>
+289|                <div class="tags">
+290|                    <span class="tag tag-hard">Hard</span>
+291|                    <span class="tag tag-system-design">System Design</span>
+292|                </div>
+293|            </div>
+294|            <div class="question">Design a URL shortening service like bit.ly. Walk me through your approach.</div>
+295|            <div class="answer-section">
+296|                <div class="answer-label">Answer</div>
+297|                <div class="answer-text">"Before designing, I'd clarify requirements: Are we optimizing for read-heavy traffic? What's the expected scale? Assuming millions of DAUs, the core function is simple: take a long URL, generate a short key, store the mapping, and redirect users.
+298|
+299|For key generation, I'd use base-62 encoding of an auto-incrementing ID from the database, giving us enough unique combinations to last a very long time. For storage, a relational database works at moderate scale, but at very high traffic I'd add a caching layer like Redis in front of it, since most redirects are reads for popular URLs.
+300|
+301|The redirect service should be stateless and horizontally scalable behind a load balancer. I'd also implement rate limiting on the creation endpoint to prevent abuse. If we need analytics, we can asynchronously log redirect events to a data pipeline."</div>
+302|                <div class="cn-hint"><strong>中文提示：</strong>系统设计经典题。回答框架：先clarify需求（读写比例、规模）→ 给出整体架构 → 深入关键组件（key生成、存储、缓存、负载均衡）→ 扩展讨论（限流、分析）。展示trade-off思考。</div>
+303|            </div>
+304|            <button class="toggle-btn" onclick="toggleAnswer(this)">Hide Answer ▲</button>
+305|        </div>
+306|
+307|        <!-- Q3 -->
+308|        <div class="card" data-lang="both">
+309|            <div class="card-header">
+310|                <span class="card-number">#03</span>
+311|                <div class="tags">
+312|                    <span class="tag tag-medium">Medium</span>
+313|                    <span class="tag tag-technical">Technical</span>
+314|                </div>
+315|            </div>
+316|            <div class="question">How do hash tables work, and how would you handle collisions?</div>
+317|            <div class="answer-section">
+318|                <div class="answer-label">Answer</div>
+319|                <div class="answer-text">"Hash tables use a hash function to map keys to array indices, providing O(1) average-case time complexity for insert, search, and delete operations.
+320|
+321|For collision handling, there are two primary strategies:
+322|
+323|1. Chaining: Each bucket stores a linked list (or balanced tree) of entries with the same hash. When a collision occurs, the new entry is appended to the list. Simple to implement; performance degrades gracefully.
+324|
+325|2. Open Addressing: When a collision occurs, probe for the next available slot. Methods include linear probing, quadratic probing, and double hashing. Requires a load factor threshold (typically 0.7) to maintain performance.
+326|
+327|In practice, modern implementations (like Java's HashMap) use chaining with trees for buckets that exceed a threshold (e.g., 8 entries), achieving O(log n) worst-case lookup."</div>
+328|                <div class="cn-hint"><strong>中文提示：</strong>数据结构基础题。回答要点：哈希表原理（hash function → index）→ 碰撞原因 → 两种解决方案（链地址法/开放寻址法）→ 各自优缺点 → 实际应用中的优化（如Java HashMap的树化）。注意区分平均O(1)和最坏情况。</div>
+329|            </div>
+330|            <button class="toggle-btn" onclick="toggleAnswer(this)">Hide Answer ▲</button>
+331|        </div>
+332|
+333|        <!-- Q4 -->
+334|        <div class="card" data-lang="both">
+335|            <div class="card-header">
+336|                <span class="card-number">#04</span>
+337|                <div class="tags">
+338|                    <span class="tag tag-easy">Easy</span>
+339|                    <span class="tag tag-behavioral">Behavioral</span>
+340|                </div>
+341|            </div>
+342|            <div class="question">Describe a time you had to learn a new technology quickly to complete a project.</div>
+343|            <div class="answer-section">
+344|                <div class="answer-label">Answer</div>
+345|                <div class="answer-text">"During my last role, our team was tasked with migrating our reporting dashboard from a JavaScript-based charting library to Apache ECharts for better performance with large datasets. I had never used ECharts before, and we had a three-week deadline.
+346|
+347|My approach was: First, I built a minimal proof-of-concept over the weekend to understand the API surface and rendering model. Second, I set up a structured learning plan — one official doc section per day, paired with implementing one chart type. Third, I created a shared internal wiki with common patterns, gotchas, and code snippets for the team.
+348|
+349|By the end of the sprint, we'd migrated 80% of the charts and reduced average render time from 2.3 seconds to 340 milliseconds. The experience taught me that rapid learning is about focused experimentation, not passive reading."</div>
+350|                <div class="cn-hint"><strong>中文提示：</strong>学习能力与主动性考察。使用SOAR结构：情境（项目需要新技术）→ 障碍（时间紧、零基础）→ 行动（POC快速验证、结构化学习计划、知识共享）→ 结果（提前完成、性能提升85%）。突出学习方法和可量化的成果。</div>
+351|            </div>
+352|            <button class="toggle-btn" onclick="toggleAnswer(this)">Hide Answer ▲</button>
+353|        </div>
+354|
+355|        <!-- Q5 -->
+356|        <div class="card" data-lang="both">
+357|            <div class="card-header">
+358|                <span class="card-number">#05</span>
+359|                <div class="tags">
+360|                    <span class="tag tag-hard">Hard</span>
+361|                    <span class="tag tag-system-design">System Design</span>
+362|                </div>
+363|            </div>
+364|            <div class="question">How would you design a rate limiter for an API?</div>
+365|            <div class="answer-section">
+366|                <div class="answer-label">Answer</div>
+367|                <div class="answer-text">"Rate limiting protects services from abuse and manages traffic. Several algorithms exist, each with trade-offs:
+368|
+369|1. Fixed Window Counter: Simple counter per time window. Problem: boundary spike — requests at the end of one window and start of the next can double the allowed rate.
+370|
+371|2. Sliding Window Log: Track individual request timestamps. More accurate but memory-intensive at high throughput.
+372|
+373|3. Token Bucket: Tokens refill at a steady rate; each request consumes one. Allows bursts up to bucket capacity while enforcing a sustained rate. Good balance of accuracy and efficiency.
+374|
+375|4. Leaky Bucket: Requests enter at any rate but exit at a fixed rate. Smooths traffic but doesn't allow controlled bursts.
+376|
+377|For a distributed system, I'd use Redis with the sliding window counter approach — storing request timestamps in a sorted set with TTL equal to the window size. This gives us O(log N) operations and automatic cleanup. For high-traffic APIs, I'd add a local in-memory rate limiter as a first layer (fast rejection) before hitting Redis."</div>
+378|                <div class="cn-hint"><strong>中文提示：</strong>分布式系统经典设计题。回答框架：明确目的（防滥用、限流）→ 对比多种算法（固定窗口/滑动窗口/令牌桶/漏桶）的优劣 → 给出分布式方案（Redis + Sorted Set）→ 扩展讨论（本地+全局双层限流、不同粒度的限流策略）。展示trade-off权衡能力。</div>
+379|            </div>
+380|            <button class="toggle-btn" onclick="toggleAnswer(this)">Hide Answer ▲</button>
+381|        </div>
+382|
+383|        <footer>
+384|            <p>Daily English Interview Q&amp;A &copy; 2026 &middot; Content sourced from LeetCode Discussions, industry guides &amp; expert interviews</p>
+385|            <p style="margin-top:8px;">Practice daily. Interview with confidence. <a href="#">Back to Home</a></p>
+386|        </footer>
+387|    </div>
+388|
+389|    <script>
+390|        function toggleAnswer(btn) {
+391|            const card = btn.closest('.card');
+392|            const answerSection = card.querySelector('.answer-section');
+393|            const answerText = answerSection.querySelector('.answer-text');
+394|            if (answerText.style.display === 'none') {
+395|                answerText.style.display = '';
+396|                btn.textContent = 'Hide Answer ▲';
+397|            } else {
+398|                answerText.style.display = 'none';
+399|                btn.textContent = 'Show Answer ▼';
+400|            }
+401|        }
+402|
+403|        function showAll(lang) {
+404|            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+405|            event.target.classList.add('active');
+406|
+407|            document.querySelectorAll('.card').forEach(card => {
+408|                const hint = card.querySelector('.cn-hint');
+409|                const answer = card.querySelector('.answer-text');
+410|                if (lang === 'en') {
+411|                    if (hint) hint.style.display = 'none';
+412|                    if (answer) answer.style.display = '';
+413|                } else if (lang === 'cn') {
+414|                    if (hint) hint.style.display = '';
+415|                    if (answer) answer.style.display = 'none';
+416|                } else {
+417|                    if (hint) hint.style.display = '';
+418|                    if (answer) answer.style.display = '';
+419|                }
+420|            });
+421|        }
+422|
+423|        // Initialize: show both
+424|        document.querySelectorAll('.cn-hint').forEach(h => h.style.display = '');
+425|    </script>
+426|<nav class="site-nav" style="text-align:center;padding:20px 0;border-top:1px solid #eee;margin-top:20px"><p style="color:#999;margin-bottom:10px">更多站点：</p><a href="/ai-daily-news/">AI日报站</a> | <a href="/chuangye-weekly/">出海工具周报</a> | <a href="/indie-dev-weekly/">独立开发者周刊</a> | <a href="/nocode-tools/">NoCode工具导航</a></nav>
+427|</body>
+428|</html>
+429|
