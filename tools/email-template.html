@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英文邮件模板库 - English Interview工具集</title>
+<meta name="description" content="英文邮件模板库，覆盖商务、求职、跟进、道歉、会议等场景，一键复制使用">
+<meta name="keywords" content="英文邮件,邮件模板,email template,商务邮件">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);color:#e0e0e0;min-height:100vh}
+.wrap{max-width:800px;margin:0 auto;padding:20px}
+header{text-align:center;padding:40px 20px 20px}
+header h1{font-size:1.8rem;background:linear-gradient(90deg,#e94560,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+header p{color:#999;margin-top:6px;font-size:.9rem}
+.category-tabs{display:flex;flex-wrap:wrap;gap:8px;padding:10px 0 20px;justify-content:center}
+.cat-tab{padding:8px 18px;border-radius:20px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#ccc;cursor:pointer;font-size:.9rem;transition:all .2s}
+.cat-tab:hover,.cat-tab.active{background:linear-gradient(90deg,#e94560,#ff6b6b);color:#fff;border-color:transparent}
+.template-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;margin:12px 0;overflow:hidden;transition:border-color .2s}
+.template-card.open{border-color:rgba(233,69,96,.4)}
+.tpl-header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;cursor:pointer;transition:background .2s}
+.tpl-header:hover{background:rgba(255,255,255,0.03)}
+.tpl-title{font-size:1rem;color:#fff;font-weight:500}
+.tpl-arrow{color:#888;transition:transform .25s;font-size:.8rem}
+.template-card.open .tpl-arrow{transform:rotate(180deg)}
+.tpl-body{display:none;padding:0 20px 20px 20px}
+.template-card.open .tpl-body{display:block}
+.tpl-subject{background:rgba(255,255,255,0.06);border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:.85rem;color:#ccc}
+.tpl-subject strong{color:#ff8a8a}
+.tpl-content{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:14px 16px;font-size:.88rem;line-height:1.8;color:#d0d0d0;white-space:pre-wrap;font-family:"SF Mono","Fira Code","Cascadia Code",Consolas,monospace}
+.copy-btn{margin-top:10px;padding:6px 16px;background:linear-gradient(90deg,#e94560,#ff6b6b);color:#fff;border:none;border-radius:6px;font-size:.82rem;cursor:pointer;transition:opacity .2s}
+.copy-btn:hover{opacity:.85}
+.back-link{display:inline-block;color:#ff8a8a;text-decoration:none;font-size:.9rem;margin-bottom:10px}
+.back-link:hover{text-decoration:underline}
+.tools-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:16px 0;margin-top:10px;border-top:1px solid rgba(255,255,255,0.06)}
+.tools-nav a{color:#aaa;text-decoration:none;font-size:.85rem;padding:5px 12px;border-radius:6px;background:rgba(255,255,255,0.03);transition:color .2s}
+.tools-nav a:hover{color:#e94560}
+.nav-links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;padding:20px 0;margin-top:20px;border-top:1px solid rgba(255,255,255,0.08)}
+.nav-links a{color:#ff8a8a;text-decoration:none;font-size:.9rem;padding:6px 14px;border-radius:8px;background:rgba(255,255,255,0.04);transition:background .2s}
+.nav-links a:hover{background:rgba(233,69,96,.12)}
+footer{text-align:center;padding:30px 20px;color:#666;font-size:.8rem;border-top:1px solid rgba(255,255,255,0.06);margin-top:20px}
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,#e94560,#ff6b6b);color:#fff;padding:10px 24px;border-radius:8px;font-size:.9rem;opacity:0;transition:opacity .3s;z-index:999}
+.toast.show{opacity:1}
+@media(max-width:600px){header h1{font-size:1.4rem}.tpl-content{font-size:.82rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="index.html" class="back-link">← 返回工具列表</a>
+<header><h1>📧 英文邮件模板库</h1><p>覆盖商务、求职、跟进、道歉、会议场景，点击展开，一键复制</p></header>
+<div class="category-tabs" id="tabs"></div>
+<div id="tplList"></div>
+<div class="tools-nav">
+<strong>SEO 工具：</strong>
+<a href="interview-question-generator.html">面试问题生成器</a>
+<a href="email-template.html">邮件模板库</a>
+<a href="resume-keyword-checker.html">简历关键词检查</a>
+</div>
+<div class="nav-links">
+<a href="/ai-daily-news/">🤖 AI日报</a>
+<a href="/english-interview/">🚀 English Interview</a>
+<a href="/chuangye-weekly/">🌏 出海工具周报</a>
+<a href="/indie-dev-weekly/">🧑‍💻 独立开发者周刊</a>
+<a href="/nocode-tools/">🔧 NoCode工具导航</a>
+<a href="/cn-seo-site/">🔍 中文SEO工具箱</a>
+</div>
+</div>
+<footer>
+<p>本工具由 AI 站群联合出品 · 所有工具均在浏览器端运行，不收集任何数据</p>
+<p>生成时间：<span id="genTime"></span></p>
+</footer>
+<div id="toast" class="toast">已复制到剪贴板 ✓</div>
+<script>
+const templates={
+商务:[
+{title:"商务合作邀请",subject:"Partnership Opportunity — [Your Company] & [Their Company]",content:"Dear [Name],
+
+I hope this email finds you well.
+
+My name is [Your Name] from [Your Company], and I've been following [Their Company]'s impressive work in [Industry/Domain]. I believe there's a compelling opportunity for us to collaborate on [specific project/initiative].
+
+Specifically, we could explore:
+• [Collaboration point 1]
+• [Collaboration point 2]
+• [Collaboration point 3]
+
+Would you be open to a brief 15-minute call next week to discuss this further?
+
+Looking forward to hearing from you.
+
+Best regards,
+[Your Name]
+[Your Title]
+[Contact Information]"},
+{title:"报价请求",subject:"Request for Quotation — [Project/Product Name]",content:"Dear [Name/Team],
+
+I am writing to request a quotation for [product/service] as per the following specifications:
+
+• [Specification 1]
+• [Specification 2]
+• [Specification 3]
+• Estimated quantity: [quantity]
+• Target delivery date: [date]
+
+Could you please provide:
+1. Unit pricing and total cost
+2. Payment terms
+3. Estimated lead time
+4. Any volume discount available
+
+We are aiming to make a decision by [date], so your prompt response would be greatly appreciated.
+
+Thank you for your time.
+
+Kind regards,
+[Your Name]
+[Your Title]
+[Company Name]"},
+{title:"产品推介",subject:"Introducing [Product] — Solutions for [Customer Pain Point]",content:"Hi [Name],
+
+I noticed that [Their Company] is currently [situation/need], and I wanted to share how our [product] could help.
+
+[Product] enables teams to:
+→ [Benefit 1]
+→ [Benefit 2]
+→ [Benefit 3]
+
+We've already helped companies like [Client 1] and [Client 2] achieve [result].
+
+Would you be interested in a quick demo this week? I'd be happy to tailor it to your specific use case.
+
+Best,
+[Your Name]
+[Your Title]
+[Link to website/demo]"}
+],
+求职:[
+{title:"求职信",subject:"Application for [Position] — [Your Name]",content:"Dear [Hiring Manager Name],
+
+I am writing to express my strong interest in the [Position] role at [Company], as advertised on [Platform]. With [X] years of experience in [field], I am confident that my skills and background align well with your needs.
+
+In my current role at [Current Company], I have:
+• [Achievement 1 with metric]
+• [Achievement 2 with metric]
+• [Achievement 3 with metric]
+
+What excites me most about [Company] is [specific reason — show research]. I am particularly drawn to your work in [area], which aligns closely with my passion for [related interest].
+
+I have attached my resume for your review. I would welcome the opportunity to discuss how my experience can contribute to your team.
+
+Thank you for your time and consideration.
+
+Sincerely,
+[Your Name]
+[Phone] | [Email] | [LinkedIn/Portfolio]"},
+{title:"感谢面试",subject:"Thank You — [Position] Interview",content:"Dear [Interviewer Name],
+
+Thank you so much for taking the time to speak with me today about the [Position] role at [Company].
+
+I especially enjoyed our discussion about [specific topic discussed], and it only reinforced my excitement about the possibility of joining your team.
+
+I am particularly confident that my experience in [relevant skill/area] would allow me to contribute meaningfully to [specific project or goal mentioned in interview].
+
+Please don't hesitate to reach out if you need any additional information. I look forward to hearing from you.
+
+Best regards,
+[Your Name]
+[Phone] | [Email]"},
+{title:"接受 Offer",subject:"Offer Acceptance — [Position] — [Your Name]",content:"Dear [Hiring Manager Name],
+
+I am delighted to formally accept the offer for the [Position] position at [Company]. Thank you for this incredible opportunity.
+
+As discussed:
+• Start date: [Date]
+• Salary: [Amount]
+• Reporting to: [Manager Name/Title]
+
+I am very excited to join the team and contribute to [specific team/project goal]. Please let me know if there are any documents I need to complete or steps I should take before my start date.
+
+Looking forward to this next chapter!
+
+Best regards,
+[Your Name]
+[Phone] | [Email]"}
+],
+跟进:[
+{title:"项目进度跟进",subject:"Update on [Project] — Status as of [Date]",content:"Hi [Name],
+
+I wanted to share a quick update on [Project]:
+
+✅ Completed:
+• [Item 1]
+• [Item 2]
+
+🔄 In Progress:
+• [Item 3] (ETA: [date])
+
+⏳ Pending:
+• [Item 4] — awaiting [input/approval] from [team/person]
+
+Next Steps:
+• [Action 1] by [date]
+• [Action 2] by [date]
+
+Please let me know if you have any questions or concerns.
+
+Best,
+[Your Name]"},
+{title:"报价/提案跟进",subject:"Following Up — [Proposal/Quote] for [Project]",content:"Hi [Name],
+
+I hope you're having a great week.
+
+I'm following up on the [proposal/quotation] I sent on [date] regarding [project/product]. Have you had a chance to review it?
+
+I'd be happy to:
+• Walk you through any questions
+• Adjust the scope if needed
+• Discuss pricing flexibility
+
+I'm available for a quick call [suggest 2-3 time slots].
+
+Looking forward to your feedback.
+
+Best regards,
+[Your Name]"},
+{title:"会议后跟进",subject:"Follow-up — [Meeting Name] on [Date]",content:"Hi [Name],
+
+Thank you everyone for a productive meeting yesterday. As discussed, here's a summary of the key points and action items:
+
+Key Decisions:
+1. [Decision 1]
+2. [Decision 2]
+
+Action Items:
+• [Action] — [Owner] — Due: [Date]
+• [Action] — [Owner] — Due: [Date]
+
+Next meeting: [Date/Time]
+
+Please review the attached [documents/notes] and let me know if I missed anything.
+
+Best,
+[Your Name]"}
+],
+道歉:[
+{title:"交付延迟道歉",subject:"Apology for Delay — [Project/Deliverable]",content:"Dear [Name],
+
+I sincerely apologize for the delay in delivering [item/project]. I understand this falls short of the agreed timeline of [original date], and I take full responsibility.
+
+The delay was caused by [brief, honest reason — keep it professional].
+
+Here's what I'm doing to address this:
+• [Immediate corrective action 1]
+• [Immediate corrective action 2]
+• New expected delivery date: [new date]
+
+I value our partnership and am committed to making this right. Please let me know if the revised timeline works for you, or if you'd like to discuss alternatives.
+
+My sincere apologies for any inconvenience this has caused.
+
+Regards,
+[Your Name]"},
+{title:"邮件内容错误更正",subject:"Correction — [Previous Subject/Topic]",content:"Hi [Name],
+
+Please accept my apologies — I made an error in my previous email.
+
+The correct information is:
+
+❌ [Incorrect info from previous email]
+✅ [Correct information]
+
+I've updated [document/link/proposal] to reflect this change. Sorry for any confusion this may have caused.
+
+Thank you for your understanding.
+
+Best,
+[Your Name]"},
+{title:"回复迟了道歉",subject:"Apologies for the delayed response",content:"Hi [Name],
+
+My sincere apologies for the delayed reply — [brief reason, e.g., I've been traveling / we had an unexpected outage / it slipped through the cracks].
+
+To address your message from [date]:
+
+[Your actual response here]
+
+I value your time and will make sure to be more responsive going forward.
+
+Thank you for your patience.
+
+Best regards,
+[Your Name]"}
+],
+会议:[
+{title:"会议邀请",subject:"Meeting Invitation — [Topic] — [Date/Time Options]",content:"Hi [Name],
+
+I'd like to schedule a meeting to discuss [topic/purpose].
+
+Proposed Details:
+• Topic: [Meeting topic]
+• Date & Time: [Option 1] or [Option 2] (your preference)
+• Duration: [e.g., 30 minutes]
+• Format: [Zoom/Teams/In-person]
+• Link: [Meeting link]
+
+Agenda:
+1. [Topic 1]
+2. [Topic 2]
+3. [Topic 3]
+
+Please let me know which time slot works best for you, or suggest an alternative.
+
+Looking forward to connecting.
+
+Best,
+[Your Name]"},
+{title:"会议议程",subject:"Agenda — [Meeting Name] on [Date]",content:"Hi Team,
+
+Ahead of our meeting on [Date] at [Time], here's the proposed agenda:
+
+📋 Agenda:
+1. [Topic 1] — [Owner] — [Time]
+2. [Topic 2] — [Owner] — [Time]
+3. [Topic 3] — [Owner] — [Time]
+
+📎 Pre-read Materials:
+• [Document 1] — [Link]
+• [Document 2] — [Link]
+
+📍 Location: [Room/Video Link]
+
+Please review the materials beforehand and come prepared with your thoughts on [specific question].
+
+See you there!
+
+Best,
+[Your Name]"},
+{title:"会议取消/改期",subject:"Rescheduling — [Meeting Name] from [Original Date]",content:"Hi [Name],
+
+Unfortunately, I need to reschedule our meeting on [original date] due to [reason — brief and professional].
+
+I apologize for any inconvenience this may cause.
+
+New proposed times:
+• [Option 1: Date & Time]
+• [Option 2: Date & Time]
+• [Option 3: Date & Time]
+
+Could you let me know which works best? I'll update the calendar invite once confirmed.
+
+Thank you for your flexibility.
+
+Best regards,
+[Your Name]"}
+]
+};
+
+const cats=Object.keys(templates);
+let activeCat=cats[0];
+
+function renderTabs(){
+ const t=document.getElementById('tabs');
+ t.innerHTML=cats.map(c=>`<div class="cat-tab ${c===activeCat?'active':''}" data-cat="${c}">${c}</div>`).join('');
+ t.querySelectorAll('.cat-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{activeCat=tab.dataset.cat;renderTabs();renderTemplates()});
+ });
+}
+
+function renderTemplates(){
+ const list=document.getElementById('tplList');
+ const items=templates[activeCat]||[];
+ list.innerHTML=`<p style="color:#888;text-align:center;margin:10px 0">${items.length} 个模板</p>`+items.map((t,i)=>`
+  <div class="template-card" id="tpl${i}">
+   <div class="tpl-header" onclick="toggleTpl(${i})">
+    <span class="tpl-title">${t.title}</span>
+    <span class="tpl-arrow">▼</span>
+   </div>
+   <div class="tpl-body">
+    <div class="tpl-subject"><strong>Subject:</strong> ${t.subject}</div>
+    <div class="tpl-content">${t.content}</div>
+    <button class="copy-btn" onclick="copyTpl(${i})">📋 复制内容</button>
+   </div>
+  </div>`).join('');
+}
+
+function toggleTpl(i){document.getElementById('tpl'+i).classList.toggle('open')}
+
+function copyTpl(i){
+ const content=document.querySelectorAll('.tpl-content')[i].textContent;
+ navigator.clipboard.writeText(content).then(()=>showToast()).catch(()=>{
+  const ta=document.createElement('textarea');ta.value=content;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();showToast();
+ });
+}
+
+function showToast(){const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500)}
+
+renderTabs();renderTemplates();
+document.getElementById('genTime').textContent=new Date().toLocaleString('zh-CN');
+</script>
+</body>
+</html>

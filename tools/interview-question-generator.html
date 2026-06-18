@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>面试问题生成器 - English Interview工具集</title>
+<meta name="description" content="面试问题生成器，选择岗位类型和经验级别随机生成5道专业面试题">
+<meta name="keywords" content="面试题,面试问题,技术面试,前端面试,后端面试">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);color:#e0e0e0;min-height:100vh}
+.wrap{max-width:800px;margin:0 auto;padding:20px}
+header{text-align:center;padding:40px 20px 20px}
+header h1{font-size:1.8rem;background:linear-gradient(90deg,#e94560,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+header p{color:#999;margin-top:6px;font-size:.9rem}
+.card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:28px;margin:24px 0}
+label{display:block;font-size:.9rem;color:#ccc;margin-bottom:6px;margin-top:14px}
+select{width:100%;padding:12px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-size:1rem;outline:none;appearance:none;cursor:pointer}
+select option{background:#1a1a2e;color:#fff}
+button{margin-top:20px;padding:12px 32px;background:linear-gradient(90deg,#e94560,#ff6b6b);color:#fff;border:none;border-radius:10px;font-size:1rem;cursor:pointer;transition:opacity .2s}
+button:hover{opacity:.85}
+.question-list{margin-top:20px}
+.q-item{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:16px 20px;margin:10px 0;display:flex;gap:14px;align-items:flex-start}
+.q-num{background:linear-gradient(135deg,#e94560,#ff6b6b);color:#fff;border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:.85rem;flex-shrink:0}
+.q-text{font-size:1rem;color:#e0e0e0;line-height:1.6}
+.q-text .en{color:#fff;font-weight:500}
+.q-text .zh{color:#aaa;font-size:.9rem;margin-top:4px}
+.btn-row{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+.btn-row button{margin-top:0;padding:8px 20px;font-size:.9rem}
+.back-link{display:inline-block;color:#ff8a8a;text-decoration:none;font-size:.9rem;margin-bottom:10px}
+.back-link:hover{text-decoration:underline}
+.nav-links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;padding:20px 0;margin-top:20px;border-top:1px solid rgba(255,255,255,0.08)}
+.nav-links a{color:#ff8a8a;text-decoration:none;font-size:.9rem;padding:6px 14px;border-radius:8px;background:rgba(255,255,255,0.04);transition:background .2s}
+.nav-links a:hover{background:rgba(233,69,96,.12)}
+.tools-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:16px 0;margin-top:10px;border-top:1px solid rgba(255,255,255,0.06)}
+.tools-nav a{color:#aaa;text-decoration:none;font-size:.85rem;padding:5px 12px;border-radius:6px;background:rgba(255,255,255,0.03);transition:color .2s}
+.tools-nav a:hover{color:#e94560}
+footer{text-align:center;padding:30px 20px;color:#666;font-size:.8rem;border-top:1px solid rgba(255,255,255,0.06);margin-top:20px}
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,#e94560,#ff6b6b);color:#fff;padding:10px 24px;border-radius:8px;font-size:.9rem;opacity:0;transition:opacity .3s;z-index:999}
+.toast.show{opacity:1}
+@media(max-width:600px){header h1{font-size:1.4rem}.card{padding:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="index.html" class="back-link">← 返回工具列表</a>
+<header><h1>🎯 面试问题生成器</h1><p>选择岗位类型和经验级别，随机生成 5 道专业面试题</p></header>
+<div class="card">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+<div>
+<label for="roleType">岗位类型</label>
+<select id="roleType">
+<option value="frontend">前端开发</option>
+<option value="backend">后端开发</option>
+<option value="product">产品经理</option>
+<option value="data">数据工程师</option>
+</select>
+</div>
+<div>
+<label for="expLevel">经验级别</label>
+<select id="expLevel">
+<option value="junior">初级 (0-2年)</option>
+<option value="mid" selected>中级 (2-5年)</option>
+<option value="senior">高级 (5年以上)</option>
+</select>
+</div>
+</div>
+<button onclick="generate()">🎲 生成面试题</button>
+<div id="questions" class="question-list"></div>
+<div class="btn-row" id="btnRow" style="display:none">
+<button onclick="generate()">🔄 重新生成</button>
+</div>
+</div>
+<div class="tools-nav">
+<strong>SEO 工具：</strong>
+<a href="interview-question-generator.html">面试问题生成器</a>
+<a href="email-template.html">邮件模板库</a>
+<a href="resume-keyword-checker.html">简历关键词检查</a>
+</div>
+<div class="nav-links">
+<a href="/ai-daily-news/">🤖 AI日报</a>
+<a href="/english-interview/">🚀 English Interview</a>
+<a href="/chuangye-weekly/">🌏 出海工具周报</a>
+<a href="/indie-dev-weekly/">🧑‍💻 独立开发者周刊</a>
+<a href="/nocode-tools/">🔧 NoCode工具导航</a>
+<a href="/cn-seo-site/">🔍 中文SEO工具箱</a>
+</div>
+</div>
+<footer>
+<p>本工具由 AI 站群联合出品 · 所有工具均在浏览器端运行，不收集任何数据</p>
+<p>生成时间：<span id="genTime"></span></p>
+</footer>
+<div id="toast" class="toast">已复制到剪贴板 ✓</div>
+<script>
+const questionBank={
+frontend:{
+junior:[
+{en:"What is the difference between let, const, and var in JavaScript?",zh:"JavaScript 中 let、const 和 var 的区别是什么？"},
+{en:"Explain the box model in CSS.",zh:"解释一下 CSS 的盒子模型。"},
+{en:"What is the DOM? How do you manipulate it?",zh:"什么是 DOM？你如何操作它？"},
+{en:"What are event listeners and how do they work?",zh:"什么是事件监听器，它们如何工作？"},
+{en:"What is the difference between HTML and XHTML?",zh:"HTML 和 XHTML 有什么区别？"},
+{en:"Explain how CSS specificity works.",zh:"解释 CSS 优先级的工作原理。"},
+{en:"What is a callback function?",zh:"什么是回调函数？"},
+{en:"How do you center a div horizontally and vertically?",zh:"你如何水平垂直居中一个 div？"}
+],
+mid:[
+{en:"Explain the difference between React Virtual DOM and real DOM.",zh:"解释 React 虚拟 DOM 和真实 DOM 的区别。"},
+{en:"What is CORS and how does it work?",zh:"什么是跨域资源共享（CORS），它如何工作？"},
+{en:"Describe the critical rendering path.",zh:"描述关键渲染路径。"},
+{en:"What are Web Workers and when would you use them?",zh:"什么是 Web Worker，什么时候使用？"},
+{en:"Explain debouncing and throttling.",zh:"解释防抖和节流。"},
+{en:"What is the difference between SSR and CSR?",zh:"服务端渲染和客户端渲染的区别是什么？"},
+{en:"How does CSS Grid differ from Flexbox?",zh:"CSS Grid 与 Flexbox 有什么不同？"},
+{en:"Explain the concept of tree-shaking in bundlers.",zh:"解释打包器中 tree-shaking 的概念。"}
+],
+senior:[
+{en:"How would you design a large-scale SPA with code splitting?",zh:"你如何设计一个具有代码分割的大型单页应用？"},
+{en:"Explain browser caching strategies and HTTP cache headers.",zh:"解释浏览器缓存策略和 HTTP 缓存头。"},
+{en:"What are WebAssembly use cases and how do they integrate with JS?",zh:"WebAssembly 的应用场景有哪些，如何与 JS 集成？"},
+{en:"Describe how you would optimize a web app's Core Web Vitals.",zh:"描述你如何优化 Web 应用的核心性能指标。"},
+{en:"How do you handle state management in large React applications?",zh:"如何在大型 React 应用中管理状态？"},
+{en:"Explain progressive enhancement vs graceful degradation.",zh:"渐进增强与优雅降级有什么区别？"},
+{en:"What is shadow DOM and how is it different from encapsulation in React?",zh:"什么是 Shadow DOM，与 React 的封装有什么区别？"},
+{en:"How would you implement a custom build tool from scratch?",zh:"你如何从零开始实现一个自定义构建工具？"}
+]
+},
+backend:{
+junior:[
+{en:"What is an API? Explain REST vs GraphQL.",zh:"什么是 API？解释 REST 与 GraphQL 的区别。"},
+{en:"What are HTTP methods? Explain GET, POST, PUT, DELETE.",zh:"什么是 HTTP 方法？解释 GET、POST、PUT、DELETE。"},
+{en:"What is a database index and why is it important?",zh:"什么是数据库索引，为什么重要？"},
+{en:"Explain the difference between SQL and NoSQL databases.",zh:"解释 SQL 和 NoSQL 数据库的区别。"},
+{en:"What is authentication vs authorization?",zh:"认证和授权有什么区别？"},
+{en:"What is the difference between TCP and UDP?",zh:"TCP 和 UDP 的区别是什么？"},
+{en:"How does a CRUD application work?",zh:"CRUD 应用如何工作？"},
+{en:"What is a foreign key in a database?",zh:"数据库中的外键是什么？"}
+],
+mid:[
+{en:"Explain database normalization and its normal forms.",zh:"解释数据库规范化及其范式。"},
+{en:"What is the CAP theorem?",zh:"CAP 定理是什么？"},
+{en:"How do you handle database migrations in production?",zh:"你如何处理生产环境的数据库迁移？"},
+{en:"Explain the difference between synchronous and asynchronous programming.",zh:"解释同步编程和异步编程的区别。"},
+{en:"What are common security vulnerabilities (SQL injection, XSS)?",zh:"常见的安全漏洞有哪些（SQL注入、XSS）？"},
+{en:"How does a load balancer work?",zh:"负载均衡器如何工作？"},
+{en:"Explain the producer-consumer pattern.",zh:"解释生产者-消费者模式。"},
+{en:"What is API versioning and why is it important?",zh:"什么是 API 版本控制，为什么重要？"}
+],
+senior:[
+{en:"How would you design a distributed system with high availability?",zh:"你如何设计具有高可用性的分布式系统？"},
+{en:"Explain microservices vs monolith architecture trade-offs.",zh:"解释微服务和单体架构的优缺点。"},
+{en:"How do you implement distributed caching strategies?",zh:"你如何实现分布式缓存策略？"},
+{en:"Describe your approach to building a scalable message queue system.",zh:"描述你构建可扩展消息队列系统的方法。"},
+{en:"How do you handle distributed transactions (two-phase commit)?",zh:"你如何处理分布式事务（两阶段提交）？"},
+{en:"Explain circuit breaker pattern and its implementation.",zh:"解释熔断器模式及其实现。"},
+{en:"How would you design an idempotent API?",zh:"你如何设计幂等的 API？"},
+{en:"Describe strategies for handling database sharding at scale.",zh:"描述大规模数据库分片的策略。"}
+]
+},
+product:{
+junior:[
+{en:"What is MVP and why is it important in product development?",zh:"什么是 MVP，它在产品开发中为什么重要？"},
+{en:"How do you prioritize features for a product?",zh:"你如何为产品优先级排序功能？"},
+{en:"What is user personas and how do you create one?",zh:"什么是用户画像，你如何创建？"},
+{en:"Explain the difference between Agile and Waterfall.",zh:"解释敏捷和瀑布的区别。"},
+{en:"What metrics would you track for a new mobile app?",zh:"你会追踪新移动应用的哪些指标？"},
+{en:"How do you conduct user interviews effectively?",zh:"你如何有效进行用户访谈？"},
+{en:"What is A/B testing and when would you use it?",zh:"什么是 A/B 测试，什么时候使用？"},
+{en:"Explain the concept of user journey mapping.",zh:"解释用户旅程映射的概念。"}
+],
+mid:[
+{en:"How do you define product success metrics for a SaaS product?",zh:"你如何定义 SaaS 产品的成功指标？"},
+{en:"Describe how you would run a product discovery process.",zh:"描述你如何进行产品发现流程。"},
+{en:"How do you balance technical debt with new feature development?",zh:"你如何平衡技术债务和新功能开发？"},
+{en:"What is OKR and how do you set effective product OKRs?",zh:"什么是 OKR，你如何设定有效的产品 OKR？"},
+{en:"How do you handle conflicting stakeholder requirements?",zh:"你如何处理冲突的利益相关者需求？"},
+{en:"Explain how you would design an onboarding flow for a new user.",zh:"解释你如何为新用户设计引导流程。"},
+{en:"What is cohort analysis and why is it useful?",zh:"什么是队列分析，它为什么有用？"},
+{en:"How do you decide when to kill a product feature?",zh:"你如何决定何时取消一个产品功能？"}
+],
+senior:[
+{en:"How do you align product strategy with business objectives?",zh:"你如何将产品战略与业务目标对齐？"},
+{en:"Describe your approach to building a product roadmap.",zh:"描述你制定产品路线图的方法。"},
+{en:"How would you enter a new market with an existing product?",zh:"你会如何用现有产品进入新市场？"},
+{en:"Explain how you manage a product portfolio across multiple platforms.",zh:"解释你如何管理多平台产品组合。"},
+{en:"How do you handle a major product pivot?",zh:"你如何处理重大产品转型？"},
+{en:"What is product-market fit and how do you measure it?",zh:"什么是产品市场契合度，你如何衡量它？"},
+{en:"Describe your experience managing a cross-functional team.",zh:"描述你管理跨职能团队的经历。"},
+{en:"How do you build a data-driven product culture in an organization?",zh:"你如何在组织中建立数据驱动的产品文化？"}
+]
+},
+data:{
+junior:[
+{en:"What is the difference between supervised and unsupervised learning?",zh:"监督学习和无监督学习的区别是什么？"},
+{en:"Explain what a pandas DataFrame is and its common operations.",zh:"解释 pandas DataFrame 是什么及其常用操作。"},
+{en:"What is overfitting and how do you prevent it?",zh:"什么是过拟合，你如何防止它？"},
+{en:"What is the difference between SQL JOIN types?",zh:"SQL JOIN 类型的区别是什么？"},
+{en:"How do you handle missing data in a dataset?",zh:"你如何处理数据集中的缺失值？"},
+{en:"What is a confusion matrix and how do you interpret it?",zh:"什么是混淆矩阵，你如何解读它？"},
+{en:"Explain the concept of normalization in data preprocessing.",zh:"解释数据预处理中正则化的概念。"},
+{en:"What is ETL and what tools have you used?",zh:"什么是 ETL，你使用过哪些工具？"}
+],
+mid:[
+{en:"How would you design a data pipeline for real-time analytics?",zh:"你如何为实时分析设计数据管道？"},
+{en:"Explain the bias-variance tradeoff with examples.",zh:"举例解释偏差-方差权衡。"},
+{en:"What is feature engineering and why is it important?",zh:"什么是特征工程，为什么重要？"},
+{en:"How do you handle imbalanced datasets?",zh:"你如何处理不平衡的数据集？"},
+{en:"Compare batch processing vs stream processing.",zh:"比较批处理和流处理。"},
+{en:"What is data normalization vs standardization?",zh:"数据标准化与归一化有什么区别？"},
+{en:"Explain how you would build a recommendation system from scratch.",zh:"解释你如何从零构建推荐系统。"},
+{en:"What is data governance and why is it important?",zh:"什么是数据治理，为什么重要？"}
+],
+senior:[
+{en:"How would you architect a data lake for an enterprise?",zh:"你如何为企业设计数据湖架构？"},
+{en:"Explain your approach to MLOps and model deployment.",zh:"解释你进行 MLOps 和模型部署的方法。"},
+{en:"How do you handle data quality issues at scale?",zh:"你如何处理大规模数据质量问题？"},
+{en:"Describe a complex data project you led end-to-end.",zh:"描述你端到端主导的一个复杂数据项目。"},
+{en:"How do you implement feature stores in production?",zh:"你如何在生产中实现特征商店？"},
+{en:"Explain differential privacy and its applications.",zh:"解释差分隐私及其应用场景。"},
+{en:"How would you design a data platform serving multiple teams?",zh:"你如何设计服务多个团队的数据平台？"},
+{en:"What is the role of data mesh in modern data architecture?",zh:"数据网格在现代数据架构中的作用是什么？"}
+]
+}
+};
+
+function generate(){
+ const type=document.getElementById('roleType').value;
+ const level=document.getElementById('expLevel').value;
+ const bank=questionBank[type][level];
+ const shuffled=[...bank].sort(()=>Math.random()-0.5);
+ const selected=shuffled.slice(0,5);
+ const area=document.getElementById('questions');
+ area.innerHTML='';
+ selected.forEach((q,i)=>{
+  const div=document.createElement('div');
+  div.className='q-item';
+  div.innerHTML=`<div class="q-num">${i+1}</div><div class="q-text"><div class="en">Q${i+1}: ${q.en}</div><div class="zh">${q.zh}</div></div>`;
+  area.appendChild(div);
+ });
+ document.getElementById('btnRow').style.display='flex';
+}
+function showToast(){
+ const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500);
+}
+document.getElementById('genTime').textContent=new Date().toLocaleString('zh-CN');
+</script>
+</body>
+</html>

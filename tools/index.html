@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English 实用工具集 - English Interview</title>
+<title>English 实用工具集 - English Interview</title>
+<title>English 实用工具集 - English Interview</title>
+<title>English 实用工具集 - English Interview</title>
+<title>English 实用工具集 - English Interview</title>
+<meta name="description" content="English Interview 站群实用工具集：面试问题生成、邮件模板库、简历关键词检查">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);color:#e0e0e0;min-height:100vh}
+.container{max-width:1100px;margin:0 auto;padding:20px}
+header{text-align:center;padding:50px 20px 30px}
+header h1{font-size:2.2rem;background:linear-gradient(90deg,#e94560,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+header p{color:#aaa;font-size:1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;padding:20px 0 40px}
+.card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:30px;transition:transform .25s,box-shadow .25s;cursor:pointer;text-decoration:none;display:block;color:inherit}
+.card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(233,69,96,.15)}
+.card-icon{font-size:2.5rem;margin-bottom:15px}
+.card h2{font-size:1.3rem;margin-bottom:10px;color:#fff}
+.card p{color:#bbb;font-size:.95rem;line-height:1.6}
+.badge{display:inline-block;background:linear-gradient(90deg,#e9456033,#ff6b6b33);border:1px solid #e94560;border-radius:20px;padding:2px 12px;font-size:.75rem;color:#ff8a8a;margin-top:10px}
+.nav-links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;padding:20px 0;margin-top:20px;border-top:1px solid rgba(255,255,255,0.08)}
+.nav-links a{color:#ff8a8a;text-decoration:none;font-size:.9rem;padding:6px 14px;border-radius:8px;background:rgba(255,255,255,0.04);transition:background .2s}
+.nav-links a:hover{background:rgba(233,69,96,.12)}
+.tools-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:16px 0;margin-top:10px;border-top:1px solid rgba(255,255,255,0.06)}
+.tools-nav a{color:#aaa;text-decoration:none;font-size:.85rem;padding:5px 12px;border-radius:6px;background:rgba(255,255,255,0.03);transition:color .2s}
+.tools-nav a:hover{color:#e94560}
+footer{text-align:center;padding:30px 20px;color:#666;font-size:.8rem;border-top:1px solid rgba(255,255,255,0.06);margin-top:20px}
+@media(max-width:600px){header h1{font-size:1.6rem}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>🛠️ English 实用工具集</h1>
+<p>零 API 成本 · 纯前端运行 · 英语学习必备</p>
+</header>
+<div class="grid">
+<a href="interview-question-generator.html" class="card">
+<div class="card-icon">🎯</div>
+<h2>面试问题生成器</h2>
+<p>选择岗位类型和经验级别，随机生成5道专业面试题，帮助面试准备和练习。</p>
+<span class="badge">面试准备</span>
+</a>
+<a href="email-template.html" class="card">
+<div class="card-icon">📧</div>
+<h2>英文邮件模板库</h2>
+<p>分类展示商务、求职、跟进、道歉、会议等英文邮件模板，一键复制使用。</p>
+<span class="badge">邮件模板</span>
+</a>
+<a href="resume-keyword-checker.html" class="card">
+<div class="card-icon">🔍</div>
+<h2>简历关键词检查</h2>
+<p>粘贴简历和职位描述，高亮匹配/未匹配的关键词，给出匹配度评分。</p>
+<span class="badge">简历优化</span>
+</a>
+</div>
+<div class="tools-nav">
+<strong>SEO 工具：</strong>
+<a href="interview-question-generator.html">面试问题生成器</a>
+<a href="email-template.html">邮件模板库</a>
+<a href="resume-keyword-checker.html">简历关键词检查</a>
+</div>
+<div class="nav-links">
+<a href="/ai-daily-news/">🤖 AI日报</a>
+<a href="/english-interview/">🚀 English Interview</a>
+<a href="/chuangye-weekly/">🌏 出海工具周报</a>
+<a href="/indie-dev-weekly/">🧑‍💻 独立开发者周刊</a>
+<a href="/nocode-tools/">🔧 NoCode工具导航</a>
+<a href="/cn-seo-site/">🔍 中文SEO工具箱</a>
+</div>
+</div>
+<footer>
+<p>本工具集由 AI 站群联合出品 · 所有工具均在浏览器端运行，不收集任何数据</p>
+<p>生成时间：<span id="genTime"></span></p>
+</footer>
+<script>document.getElementById('genTime').textContent=new Date().toLocaleString('zh-CN')</script>
+</body>
+</html>
